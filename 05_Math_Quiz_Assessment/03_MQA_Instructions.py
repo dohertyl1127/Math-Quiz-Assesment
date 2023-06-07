@@ -20,11 +20,11 @@ def yes_no(question):
 
 
 # main routine
+while True:
+    instruct = yes_no("Have you played before?")
+    print()
 
-instruct = yes_no("Have you played before?")
-print()
+    if instruct == "no":
+        instructions()
 
-if instruct == "no":
-    instructions()
-
-print("program continues")
+    print("program continues")

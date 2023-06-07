@@ -1,3 +1,4 @@
+# Functions
 def difficulty_checker():
     diff_level = ""
     while diff_level == "":
@@ -17,16 +18,14 @@ def difficulty_checker():
             break
             # Perform actions for Hard level here
         else:
-            print()
             print("Invalid difficulty level entered. Please try again.")
-            print()
             # Optionally, you can choose to recursively call the function again to prompt for a valid difficulty level
             # difficulty_checker()
 
-    print()
     print(f"you select {diff_level} difficulty")
     print()
 
 
 # Call the function
-difficulty_checker()
+while True:
+    difficulty_checker()
