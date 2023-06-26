@@ -1,7 +1,6 @@
-# functions
 def check_questions():
     while True:
-        response = input("how many questions? ")
+        response = input("how many rounds? ")
 
         round_error = "please type either <enter>" \
                       "or an integer that is more than 0"
@@ -23,6 +22,6 @@ def check_questions():
 
     # main routine
 
-while True:
-    questions = check_questions()
-    print(questions, "questions")
+
+questions = check_questions()
+print(questions, "questions")

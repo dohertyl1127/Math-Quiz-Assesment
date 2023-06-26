@@ -103,8 +103,7 @@ if instruct == "no":
 # asks user for level of difficulty
 difficulty_checker()
 # asks user for amount of questions
-questions = ask_questions()
-print(f"you will be asked {questions} questions")
+print(f"you will be asked {response} questions")
 print()
 # set question amounts
 questions_played = 0
