@@ -61,17 +61,14 @@ def difficulty_checker():
             print("Invalid difficulty level entered. Please try again.")
             # Optionally, you can choose to recursively call the function again to prompt for a valid difficulty level
             # difficulty_checker()
-
-    print(f"you select {diff_level} difficulty")
-    print()
+    return diff_level
 
 
-def ask_questions():
+def check_questions():
     while True:
-
         response = input("how many questions? ")
 
-        question_error = "please type either <enter>" \
+        round_error = "please type either <enter>" \
                       "or an integer that is more than 0"
 
         if response != "":
@@ -80,11 +77,11 @@ def ask_questions():
                 response = int(response)
 
                 if response < 1:
-                    print(question_error)
+                    print(round_error)
                     continue
 
             except ValueError:
-                print(question_error)
+                print(round_error)
                 continue
 
         return response
@@ -103,16 +100,11 @@ if instruct == "no":
 # asks user for level of difficulty
 difficulty_checker()
 # asks user for amount of questions
-print(f"you will be asked {response} questions")
+questions = check_questions()
+print(f"you will be asked {questions} questions")
 print()
 # set question amounts
 questions_played = 0
 questions_wrong = 0
 questions_right = questions_played - questions_wrong
 game_summary = []
-
-
-
-
-
-

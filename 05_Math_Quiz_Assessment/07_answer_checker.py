@@ -2,6 +2,30 @@ import random
 
 
 # functions
+def int_checker(question):
+    while True:
+        user_input = input(question)
+        try:
+            number = float(user_input)
+            return number
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+
+def statement_gen(statement, decoration):
+    sides = decoration * 3
+
+    statement = "{} {} {}".format(sides, statement, sides)
+
+    top_bottom = decoration * len(statement)
+
+    print(top_bottom)
+    print(statement)
+    print(top_bottom)
+
+    return ""
+
+
 def difficulty_checker():
     diff_level = ""
     while diff_level == "":
@@ -97,20 +121,33 @@ def generate_random_equation():
     return equation, answer
 
 
-def check_answer(equation, answer, max_attempts):
-    for item in range(max_attempts + 1):
-        user_answer = input(equation)
-        if user_answer == answer:
-            print("Correct!")
-            return True
+def check_answer(question, correct_answer, difficulty):
+    if difficulty == 'easy':
+        attempts = 4
+    else:
+        attempts = 2
+    attempts_taken = 0
+    attempts_left = attempts
+    for item in range(attempts):
+        wrong = "Sorry that is incorrect"
+        attempts_left -= 1
+        print(f"you have {attempts_left + 1} attempts ")
+        user_answer = int_checker(question)
+        if user_answer == correct_answer:
+            return 'correct'
+        elif attempts_left < 1:
+            return 'wrong'
         else:
-            print(f"Attempt {attempt} is incorrect.")
-        print("Sorry, you've used all your attempts. The correct answer was:", answer)
-        return False
+            print(wrong)
+            attempts_taken += 1
 
 
 # main routine
 while True:
+    questions_attempted = 0
+    questions_wrong = 0
+    questions_right = questions_attempted - questions_wrong
+
     diff_level = difficulty_checker()
 
     print(f"you select {diff_level} difficulty")
@@ -121,10 +158,13 @@ while True:
 
     for item in range(questions):
         equation, answer = generate_random_equation()
-        print("Equation:", equation)
-        print("Answer:", answer)
-        if diff_level == 'easy':
-            max_attempts = 4
-        else:
-            max_attempts = 2
-        check_answer(equation, answer, max_attempts)
+        statement_gen(f"question {questions_attempted + 1} of {questions}", "=")
+        print(f"correct answer is {answer}")
+        wrong_right = check_answer(equation, answer, diff_level)
+        if wrong_right == 'correct':
+            statement_gen("correct!", "+")
+        elif wrong_right == 'wrong':
+            statement_gen("sorry, you got it wrong", "-")
+            questions_wrong += 1
+        questions_attempted += 1
+        print()
