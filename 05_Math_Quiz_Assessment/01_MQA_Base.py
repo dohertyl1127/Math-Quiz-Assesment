@@ -31,8 +31,9 @@ def statement_gen(statement, decoration):
 def instructions():
     print("This is a basic math quiz. In this quiz, you will choose from ")
     print("easy, medium, and hard difficulties. Then, choose how many")
-    print("questions you will be asked. Try to answer the questions to")
-    print("the best of your ability and have fun!")
+    print("questions you will be asked. I would recommend easy for 0-10")
+    print("year olds, medium for 11-15 year olds and hard for 16+. Try to ")
+    print("answer the questions to the best of your ability and have fun!")
     print()
 
 
