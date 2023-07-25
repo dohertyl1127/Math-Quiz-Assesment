@@ -94,13 +94,14 @@ def generate_random_equation():
     # generates easy numbers and operators
     if diff_level == "easy":
         operators = ['+', '-']
-        operator = random.choice(operators)
+    else:
+        operators = ['+', '-', '*', '/']
+    operator = random.choice(operators)
+    if diff_level == "easy":
         operand1 = random.randint(1, 50)
         operand2 = random.randint(1, 50)
     # generates medium numbers and operators
     elif diff_level == "medium":
-        operators = ['+', '-', '*', '/']
-        operator = random.choice(operators)
         if operator == '*':
             operand1 = random.randint(1, 20)
             operand2 = random.randint(1, 20)
@@ -112,8 +113,6 @@ def generate_random_equation():
             operand2 = random.randint(1, 1000)
     # generates hard numbers and operators
     else:
-        operators = ['+', '-', '*', '/']
-        operator = random.choice(operators)
         if operator == '*':
             operand1 = random.randint(1, 100)
             operand2 = random.randint(1, 100)
@@ -123,7 +122,6 @@ def generate_random_equation():
         else:
             operand1 = random.randint(1, 10000)
             operand2 = random.randint(1, 10000)
-
     # Calculate the correct answer based on the chosen equation
     if operator == '+':
         correct_answer = operand1 + operand2
@@ -143,7 +141,7 @@ def generate_random_equation():
 def check_answer(question, correct_answer, difficulty):
     # sets attempts depending on the difficulty
     if difficulty == 'easy':
-        attempts = 4
+        attempts = 3
     else:
         attempts = 2
     attempts_taken = 0
